@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ask a Question</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">RGA IA</h1>
+    <h2 class="mt-5">Ask a Question</h2>
+    <form action="#" th:action="@{/askQuestion}" method="post">
+        <div class="form-group">
+            <label for="question">Question:</label>
+            <input type="text" class="form-control" id="question" name="question" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ask</button>
+    </form>
+
+    <div class="mt-4">
+        <h2>Response:</h2>
+        <p th:text="${response}"></p>
+    </div>
+</div>
+</body>
+</html>
