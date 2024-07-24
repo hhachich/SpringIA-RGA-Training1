@@ -38,14 +38,38 @@ public class RagRestController {
         List<Document> documents = vectorStore.similaritySearch(
                 SearchRequest.query(question).withTopK(4)
         );
-        int page = (int) documents.get(0).getMetadata().get("page_number");
 
         List<String> context = documents.stream().map(d -> d.getContent()).toList();
 
         Prompt prompt = promptTemplate.create(Map.of("context", context, "question", question));
-        String content =chatClient.prompt(prompt).call().content();
-        String response = content + " | page = " + page;
-        return response;
+        return chatClient.prompt(prompt).call().content();
+    }
+    @GetMapping(value = "/ask1",produces = MediaType.TEXT_MARKDOWN_VALUE)
+    public String ask1(String question){
+        String message= """
+                <INST>You are an AI assistant that can answer your questions. Use the content provided. If you don't know the answer, don't make suggestions just say "I don't know".</INST>
+                content: {content}
+                question: {input}
+                                
+                """;
+        PromptTemplate promptTemplate=new PromptTemplate(message);
+
+
+        String myContent = """
+            Alex is a programmer working for hhachich Programming.
+            
+            Alex is under paid.
+            
+            Bob is a programmer working for Acme Programming.
+            
+            Bob is paid more than Alex.
+            
+            hhachich Programming is a consulting company that employs programmers.
+            
+            """;
+
+        Prompt prompt = promptTemplate.create(Map.of("content", myContent, "input", question));
+        return chatClient.prompt(prompt).call().content();
     }
     @GetMapping("/chat")
     public List<Generation> chat(String question){
