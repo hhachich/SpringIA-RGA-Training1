@@ -19,7 +19,7 @@ import java.util.List;
 
 @Component
 public class DataLoader {
-    @Value("classpath:/pdf/question-entretient-Java.pdf")
+    @Value("classpath:/pdf/Fake-CV.pdf")
     private Resource pdfFile;
     @Value("vector1.json")
     private String vectorStoreName;

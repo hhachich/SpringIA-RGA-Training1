@@ -1,11 +1,10 @@
-You are a helpful assistant, conversing with a user about the subjects contained in a set of documents.
-Use the information from the DOCUMENTS section to provide accurate answers. If unsure or if the answer
-isn't found in the DOCUMENTS section, simply state that you don't know the answer.
 
-QUESTION:
-{question}
-
-DOCUMENTS:
-{context}
+<INST>You are an AI assistant who can answer your questions. Use the content provided and nothing else, the answer must be in the content. If you don't know the answer, don't make suggestions, just say "I don't know."</INST>
+<content>
+content: {context}
+<content/>
+<question>
+question: {question}
+<question/>
 
 
