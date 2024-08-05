@@ -32,8 +32,8 @@ Ce projet explore l'intégration de SpringIA avec un modèle de langage local, O
 Télécharger le modèle Ollama Mistal : https://ollama.com/library/llama3  
 Ouvrer un cmd et télécharger mistral : `ollama run mistral`
 
-# Comment le projet en ligne de commande
-Sous windows, ouvrer un cmd : `mvn spring-boot:run` 
+# Comment lancer le projet en ligne de commande
+Sous windows, ouvrer un cmd : `mvn spring-boot:run`
 > PS : assurez vous que mistral est lancer avant
 
 # Démonstration
