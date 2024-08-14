@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>RAG IA - Ask a Question</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<!-- barre de navigation -->
+<th:block th:replace="navBar"/>
+<!-- Contenu Principal -->
+<div class="container">
+  <h1 class="mt-5">RAG IA</h1>
+  <h2 class="mt-5">Ask a Question</h2>
+  <!-- Formulaire de question -->
+  <form action="#" th:action="@{/askQuestion}" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="question">Question:</label>
+      <input type="text" class="form-control" id="question" name="question" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Ask</button>
+  </form>
+  <!-- Affichage des réponses -->
+  <div class="mt-4">
+    <h2>Response:</h2>
+    <p th:text="${response}"></p>
+  </div>
+  <!-- Liste des documents JSON -->
+  <div class="mt-4">
+    <h2>Vector databases :</h2>
+    <ul>
+      <th:block th:each="docName : ${documentNames}">
+        <li th:text="${docName}"></li>
+      </th:block>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

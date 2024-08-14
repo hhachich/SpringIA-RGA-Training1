@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"fr.hhachich.SpringIA.RGA","l":"DataLoader"},{"p":"fr.hhachich.SpringIA.RGA","l":"FileUploadController"},{"p":"fr.hhachich.SpringIA.RGA","l":"RagController"},{"p":"fr.hhachich.SpringIA.RGA","l":"RagRestController"},{"p":"fr.hhachich.SpringIA","l":"SpringIaApplication"}];updateSearchResults();

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload PDF</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<!-- barre de navigation -->
+<th:block th:replace="navBar"/>
+<!-- Contenu Principal -->
+<div class="container">
+    <h1 class="mt-5">Upload PDF</h1>
+    <form action="#" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="pdfFile">Select PDF to upload:</label>
+            <input type="file" class="form-control-file" id="pdfFile" name="pdfFile" accept=".pdf" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+
+    <div class="mt-4">
+        <h2>Status:</h2>
+        <p th:text="${message}"></p>
+    </div>
+</div>
+</body>
+</html>

@@ -36,6 +36,46 @@ Ouvrer un cmd et télécharger mistral : `ollama run mistral`
 Sous windows, ouvrer un cmd : `mvn spring-boot:run`
 > PS : assurez vous que mistral est lancer avant
 
+# Diagramme des relations entre les classes
+
+```mermaid
+classDiagram
+    class RagRestController {
+        - ChatClient chatClient
+        - Resource promptResource
+        - VectorStore vectorStore
+        + String ask(String question)
+        + String ask1(String question)
+        + List~Generation~ chat(String question)
+    }
+
+    class RagController {
+        - RagRestController ragRestController
+        + String index()
+        + String ask(Model model)
+        + String ask(String question, Model model)
+    }
+
+    class FileUploadController {
+        - DataLoader dataLoader
+        + String index()
+        + String handleFileUpload(MultipartFile pdfFile, Model model)
+    }
+
+    class DataLoader {
+        - EmbeddingModel embeddingModel
+        + SimpleVectorStore simpleVectorStore()
+        + List~Resource~ getPdfFiles()
+    }
+
+    RagRestController --> VectorStore : Utilise
+    RagRestController --> ChatClient : Utilise
+    RagController --> RagRestController : Dépend de
+    FileUploadController --> DataLoader : Dépend de
+    DataLoader --> EmbeddingModel : Utilise
+    DataLoader --> SimpleVectorStore : Produit
+```
+
 # Démonstration
 
 ## Cas d'utilisation
